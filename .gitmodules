@@ -1,0 +1,5 @@
+[submodule "orthogonal-engineering"]
+	path = orthogonal-engineering
+	url = file:///C:/Users/Aidor/orthogonal-engineering
+	shallow = true
+	update = none
