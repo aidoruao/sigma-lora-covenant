@@ -1,0 +1,90 @@
+# NAVIGATION INVARIANTS
+# Absolute constraints on topology structure
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+invariants:
+  root_reachability:
+    id: INVARIANT_001
+    name: ROOT_REACHABILITY
+    rule: All nodes must have path to COVENANT_ROOT via COVENANT_BINDING or transitive DEPENDENCY_IMPORT
+    violation: Orphaned structures without authority chain
+    check: graph_traversal_from_root
+    
+  authority_non_escalation:
+    id: INVARIANT_002
+    name: AUTHORITY_NON_ESCALATION
+    rule: No traversal sequence may grant authority not possessed at origin
+    violation: Authority gained through edge traversal
+    check: authority_level_monotonic_along_path
+    
+  mode_boundary_preservation:
+    id: INVARIANT_003
+    name: MODE_BOUNDARY_PRESERVATION
+    rule: OPERATIONAL_MODE_BINDING cannot be weakened via dependency chains
+    violation: Importing less-restricted module grants access to restricted operations
+    check: mode_restrictions_accumulate
+    
+  verification_monotonicity:
+    id: INVARIANT_004
+    name: VERIFICATION_MONOTONICITY
+    rule: VERIFICATION_REQUIREMENT can only increase (NONE → HASH → CORRESPONDENCE), never decrease
+    violation: Verified artifact references unverified artifact
+    check: verification_level_non_decreasing
+    ordering:
+      - NONE
+      - HASH_CHAIN
+      - CORRESPONDENCE
+    
+  constraint_layer_additivity:
+    id: INVARIANT_005
+    name: CONSTRAINT_LAYER_ADDITIVITY
+    rule: Constraint layers accumulate (never subtract) along dependency paths
+    violation: Module bound by GRACE imports module with GRACE = NONE
+    check: constraint_set_union_along_path
+    
+  temporal_ordering_consistency:
+    id: INVARIANT_006
+    name: TEMPORAL_ORDERING_CONSISTENCY
+    rule: GENESIS → FOUNDATION → SUBSTRATE → OVERLAY → EPHEMERAL order must hold
+    violation: FOUNDATION depends on OVERLAY
+    check: temporal_dependencies_respect_ordering
+    ordering:
+      - GENESIS
+      - FOUNDATION
+      - SUBSTRATE
+      - OVERLAY
+      - EPHEMERAL
+    
+  correspondence_bijection:
+    id: INVARIANT_007
+    name: CORRESPONDENCE_BIJECTION
+    rule: CORRESPONDENCE_MAPPING edges must maintain 1:1 mapping
+    violation: Multiple code structures map to single reality element or vice versa
+    check: bijection_verification
+    
+  guardian_non_interference:
+    id: INVARIANT_008
+    name: GUARDIAN_NON_INTERFERENCE
+    rule: GUARDIAN_WATCH edges do not grant modification rights
+    violation: Guardian system alters watched node
+    check: guardian_read_only
+    
+  violation_log_immutability:
+    id: INVARIANT_009
+    name: VIOLATION_LOG_IMMUTABILITY
+    rule: VIOLATION_LOG nodes admit only VIOLATION_REFERENCE edges (append-only)
+    violation: Deletion, modification, or reinterpretation of violations
+    check: violation_log_append_only
+    
+  spatial_orthogonality:
+    id: INVARIANT_010
+    name: SPATIAL_ORTHOGONALITY
+    rule: SPATIAL axis does not encode AUTHORITY, CONSTRAINT_LAYER, or OPERATIONAL_MODE_BINDING
+    violation: Directory location implies constraint or permission
+    check: spatial_structure_meaning_free
+
+metadata:
+  version: 1.0.0
+  immutable: true
+  hash: [COMPUTED_ON_COMMIT]

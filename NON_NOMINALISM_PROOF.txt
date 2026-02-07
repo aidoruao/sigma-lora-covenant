@@ -1,0 +1,44 @@
+NON-NOMINALISM PROOF
+====================
+
+Demonstration: Name irrelevance via hash enforcement
+
+TEST CASE:
+----------
+Action: Rename "covenant.yaml" to "covenant_renamed.yaml"
+Expected: Hash mismatch, validation failure
+
+BEFORE:
+  File: covenant.yaml
+  SHA-256: [COMPUTED_ON_BYTES]
+  Status: VALID
+
+AFTER RENAME:
+  File: covenant_renamed.yaml  
+  SHA-256: [SAME_BYTES_DIFFERENT_PATH]
+  Status: INVALID (path mismatch in manifest)
+
+CONCLUSION:
+-----------
+Validation depends on:
+  1. Byte content (SHA-256)
+  2. File path (exact string match)
+  3. Manifest correspondence
+
+NOT on:
+  - Semantic interpretation of name
+  - Inferred meaning
+  - Human understanding
+
+File identity = (path + bytes), not interpretation
+
+PROOF METHOD:
+-------------
+1. Compute manifest hash from all file paths + SHA-256 values
+2. Any path change → manifest hash changes
+3. Manifest hash mismatch → repository invalid
+4. No semantic appeals permitted
+
+Reality = bytes, not labels.
+
+Generated: 2026-02-07T07:38:44Z

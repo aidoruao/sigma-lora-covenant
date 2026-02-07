@@ -101,7 +101,7 @@ Generator: SIGMA_LORA_COVENANT_SPEC_V1
 SIGNATURE
 =========
 Initialized by: Claude (200k context, Desktop Commander/MCP)
-On behalf of: Tony / Σ_LORA_COVENANT
+On behalf of: USER / Σ_LORA_COVENANT
 Purpose: Foundational infrastructure for 5000-node covenant system
 
 === INITIALIZATION COMPLETE ===

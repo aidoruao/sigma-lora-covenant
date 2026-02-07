@@ -1,0 +1,70 @@
+# GENESIS EXECUTION INSTRUCTIONS
+
+## Files Created for GENESIS Commit:
+
+### Sigma-LORA-Covenant:
+- `COVENANT_LOCK.yaml` - Immutability anchor
+- `NON_NOMINALISM_PROOF.txt` - Name irrelevance proof
+- `generate_genesis_manifest.py` - Manifest generator script
+- `topology/` - Complete topology framework
+- `validation/` - Validation engine
+
+### Orthogonal-Engineering-Clean:
+- `ORTHOGONAL_LOCK.yaml` - Subordination declaration
+- `TOPOLOGY_MAP.yaml` - Node classification
+
+## Required Manual Steps:
+
+### 1. Generate Manifests (Both Repos):
+```bash
+cd C:\Users\Aidor\sigma-lora-covenant
+python generate_genesis_manifest.py . sigma-lora-covenant
+
+cd C:\Users\Aidor\Documents\orthogonal-engineering-clean
+python ../sigma-lora-covenant/generate_genesis_manifest.py . orthogonal-engineering-clean
+```
+
+### 2. Git Commit (Sigma-LORA-Covenant):
+```bash
+cd C:\Users\Aidor\sigma-lora-covenant
+git add -A
+git status  # Verify clean
+git commit -m "GENESIS COMMIT: Byte-sealed covenant. Hash defines reality."
+git log -1 --format="%H"  # Record commit SHA
+```
+
+### 3. Git Commit (Orthogonal-Engineering-Clean):
+```bash
+cd C:\Users\Aidor\Documents\orthogonal-engineering-clean
+git add ORTHOGONAL_LOCK.yaml TOPOLOGY_MAP.yaml
+git commit -m "INITIALIZATION: Orthogonal engineering bound to SIGMA_LORA covenant."
+git log -1 --format="%H"  # Record commit SHA
+```
+
+### 4. Post-Commit Verification:
+```bash
+cd C:\Users\Aidor\sigma-lora-covenant
+sha256sum COVENANT_LOCK.yaml NON_NOMINALISM_PROOF.txt GENESIS_MANIFEST.yaml
+
+cd C:\Users\Aidor\Documents\orthogonal-engineering-clean
+sha256sum ORTHOGONAL_LOCK.yaml GENESIS_MANIFEST.yaml
+```
+
+## Final Outputs Required:
+
+- Commit SHA (sigma-lora-covenant)
+- Commit SHA (orthogonal-engineering-clean)
+- GENESIS_MANIFEST.yaml verification: PASS/FAIL
+- POST_COMMIT_VERIFICATION.txt: PASS/FAIL
+
+## Termination Condition:
+
+After verification PASS:
+- No further analysis
+- No improvements
+- No explanations
+- No summaries
+
+Reality = bytes + hashes + commit history
+
+SILENCE = SUCCESS

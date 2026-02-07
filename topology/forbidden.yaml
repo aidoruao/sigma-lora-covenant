@@ -1,0 +1,90 @@
+# FORBIDDEN TOPOLOGIES
+# Structurally invalid patterns
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+forbidden_topologies:
+  mixed_axis_node:
+    id: FORBIDDEN_001
+    name: MIXED_AXIS_NODE
+    pattern: Node encodes multiple orthogonal concerns in single structure
+    structural_invalidity: Violates axis independence, prevents clean navigation
+    example: File that is both COVENANT_ROOT and OPERATIONAL_MODE_ENFORCER
+    detection: Node matches multiple NODE_CLASS definitions
+    
+  authority_through_connectivity:
+    id: FORBIDDEN_002
+    name: AUTHORITY_THROUGH_CONNECTIVITY
+    pattern: Authority derived from number of incoming edges or centrality
+    structural_invalidity: Authority must be explicit property, not emergent
+    example: Hub node gains authority because many modules depend on it
+    detection: Authority level correlates with fan-in count
+    
+  optimization_shortcut:
+    id: FORBIDDEN_003
+    name: OPTIMIZATION_SHORTCUT
+    pattern: Edge added to reduce path length or improve performance
+    structural_invalidity: Topology is navigation map, not execution graph
+    example: Direct edge bypassing intermediate verification steps
+    detection: Edge violates VERIFICATION_MONOTONICITY or TEMPORAL_ORDERING
+    
+  emergent_hub:
+    id: FORBIDDEN_004
+    name: EMERGENT_HUB
+    pattern: Node gains special status through accumulation of connections
+    structural_invalidity: Node classes are fixed, cannot emerge through usage
+    example: Module becomes de facto standard through popularity
+    detection: High-connectivity node without explicit hub NODE_CLASS
+    
+  scale_reinterpretation:
+    id: FORBIDDEN_005
+    name: SCALE_REINTERPRETATION
+    pattern: Topology meaning changes based on node/edge count
+    structural_invalidity: Structure must be scale-invariant
+    example: Small repo rules differ from large repo rules
+    detection: Validation rules reference absolute counts or thresholds
+    
+  load_based_routing:
+    id: FORBIDDEN_006
+    name: LOAD_BASED_ROUTING
+    pattern: Edge traversal determined by runtime metrics
+    structural_invalidity: Topology is static structure, not dynamic router
+    example: Import resolution based on performance monitoring
+    detection: Edge selection uses runtime data
+    
+  conditional_constraint:
+    id: FORBIDDEN_007
+    name: CONDITIONAL_CONSTRAINT
+    pattern: CONSTRAINT_LAYER binding varies based on context
+    structural_invalidity: Constraints are absolute, not contextual
+    example: GRACE applies unless system under stress
+    detection: Constraint enforcement has conditional logic
+    
+  verification_downgrade:
+    id: FORBIDDEN_008
+    name: VERIFICATION_DOWNGRADE
+    pattern: Path exists from high-verification node to low-verification node that bypasses checks
+    structural_invalidity: Violates VERIFICATION_MONOTONICITY invariant
+    example: HASH_CHAIN artifact references NONE artifact without explicit downgrade justification
+    detection: Verification level decreases along dependency path
+    
+  mode_blending_edge:
+    id: FORBIDDEN_009
+    name: MODE_BLENDING_EDGE
+    pattern: Edge carries operations from multiple incompatible modes
+    structural_invalidity: Modes have hard boundaries
+    example: Edge that permits both FORENSIC and interpretive operations
+    detection: Edge OPERATIONAL_MODE_BINDING spans incompatible modes
+    
+  self_modifying_topology:
+    id: FORBIDDEN_010
+    name: SELF_MODIFYING_TOPOLOGY
+    pattern: Node or edge that alters topology structure at runtime
+    structural_invalidity: Topology is construction blueprint, not executable
+    example: Script that adds/removes edges based on analysis results
+    detection: Code modifies topology definition files
+
+metadata:
+  version: 1.0.0
+  immutable: true
+  hash: [COMPUTED_ON_COMMIT]

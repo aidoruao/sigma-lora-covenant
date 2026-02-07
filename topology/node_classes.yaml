@@ -1,0 +1,201 @@
+# NODE CLASSES
+# Structural types for topology navigation
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+node_classes:
+  covenant_root:
+    id: NODE_CLASS_001
+    name: COVENANT_ROOT
+    description: Immutable specification file containing principle hashes
+    allowed_axes:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - VERIFICATION_REQUIREMENT
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - DEPENDENCY_FLOW
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      authority: EXTERNAL_ONLY
+      constraint_layer: COMPOSITE
+      verification: HASH_CHAIN
+      temporal: GENESIS
+      location_fixed: true
+      content_mutable: false
+    
+  principle_module:
+    id: NODE_CLASS_002
+    name: PRINCIPLE_MODULE
+    description: Code implementing single covenant principle constraints
+    allowed_axes:
+      - SPATIAL
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - DEPENDENCY_FLOW
+      - VERIFICATION_REQUIREMENT
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      authority: VALIDATED
+      constraint_layer: SINGLE
+      verification: CORRESPONDENCE
+      temporal: FOUNDATION
+      principle_id: FIXED_AT_CREATION
+    
+  operational_mode_enforcer:
+    id: NODE_CLASS_003
+    name: OPERATIONAL_MODE_ENFORCER
+    description: Module defining forbidden/allowed operations for execution mode
+    allowed_axes:
+      - SPATIAL
+      - AUTHORITY
+      - OPERATIONAL_MODE_BINDING
+      - DEPENDENCY_FLOW
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - CONSTRAINT_LAYER
+      - VERIFICATION_REQUIREMENT
+    immutable_properties:
+      authority: VALIDATED
+      mode_binding: SELF
+      temporal: FOUNDATION
+      operation_lists_immutable: true
+    
+  guardian_system:
+    id: NODE_CLASS_004
+    name: GUARDIAN_SYSTEM
+    description: Runtime violation detector
+    allowed_axes:
+      - SPATIAL
+      - DEPENDENCY_FLOW
+      - CONSTRAINT_LAYER
+      - VERIFICATION_REQUIREMENT
+      - OPERATIONAL_MODE_BINDING
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+    immutable_properties:
+      constraint_layer: COMPOSITE
+      verification: FALSIFIABLE
+      temporal: SUBSTRATE
+      detection_only: true
+    
+  correspondence_bridge:
+    id: NODE_CLASS_005
+    name: CORRESPONDENCE_BRIDGE
+    description: Reality-to-code binding structure
+    allowed_axes:
+      - SPATIAL
+      - DEPENDENCY_FLOW
+      - VERIFICATION_REQUIREMENT
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      verification: CORRESPONDENCE
+      temporal: SUBSTRATE
+      bidirectional: true
+      interpretation_forbidden: true
+    
+  forgiveness_module:
+    id: NODE_CLASS_006
+    name: FORGIVENESS_MODULE
+    description: Error recovery without nominalism
+    allowed_axes:
+      - SPATIAL
+      - DEPENDENCY_FLOW
+      - CONSTRAINT_LAYER
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - VERIFICATION_REQUIREMENT
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      constraint_layer: GRACE
+      temporal: OVERLAY
+      coercion_forbidden: true
+      unconditional_operation: true
+    
+  violation_log:
+    id: NODE_CLASS_007
+    name: VIOLATION_LOG
+    description: Immutable record of constraint violations
+    allowed_axes:
+      - SPATIAL
+      - VERIFICATION_REQUIREMENT
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - DEPENDENCY_FLOW
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      authority: IMMUTABLE
+      verification: HASH_CHAIN
+      temporal: EPHEMERAL
+      append_only: true
+    
+  evidence_artifact:
+    id: NODE_CLASS_008
+    name: EVIDENCE_ARTIFACT
+    description: Verifiable proof of system state
+    allowed_axes:
+      - SPATIAL
+      - VERIFICATION_REQUIREMENT
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - DEPENDENCY_FLOW
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      verification: HASH_CHAIN
+      temporal: EPHEMERAL
+      self_describing: true
+      interpretation_free: true
+    
+  infrastructure_registry:
+    id: NODE_CLASS_009
+    name: INFRASTRUCTURE_REGISTRY
+    description: Enumeration of physical compute/storage resources
+    allowed_axes:
+      - SPATIAL
+      - CONSTRAINT_LAYER
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - DEPENDENCY_FLOW
+      - VERIFICATION_REQUIREMENT
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      constraint_layer: KENOSIS
+      temporal: FOUNDATION
+      resource_count_fixed: false
+      growth_requires_justification: true
+    
+  documentation_index:
+    id: NODE_CLASS_010
+    name: DOCUMENTATION_INDEX
+    description: Navigation pointer only, no semantic content
+    allowed_axes:
+      - SPATIAL
+      - TEMPORAL_ORDERING
+    prohibited_axes:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+      - DEPENDENCY_FLOW
+      - VERIFICATION_REQUIREMENT
+      - OPERATIONAL_MODE_BINDING
+    immutable_properties:
+      temporal: OVERLAY
+      references_only: true
+      no_interpretation: true
+
+metadata:
+  version: 1.0.0
+  immutable: true
+  hash: [COMPUTED_ON_COMMIT]

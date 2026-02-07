@@ -1,0 +1,125 @@
+# EDGE CLASSES
+# Connection types for topology navigation
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+edge_classes:
+  covenant_binding:
+    id: EDGE_CLASS_001
+    name: COVENANT_BINDING
+    directionality: UNI
+    direction: COVENANT_ROOT → PRINCIPLE_MODULE
+    axis_binding:
+      - AUTHORITY
+      - CONSTRAINT_LAYER
+    permits:
+      - constraint_propagation
+    cannot_carry:
+      - execution_logic
+      - optimization_hints
+      - interpretation
+    
+  dependency_import:
+    id: EDGE_CLASS_002
+    name: DEPENDENCY_IMPORT
+    directionality: UNI
+    direction: source → target
+    axis_binding:
+      - DEPENDENCY_FLOW
+    permits:
+      - code_reference
+    cannot_carry:
+      - authority
+      - constraints
+      - modes
+      - verification_requirements
+    
+  verification_chain:
+    id: EDGE_CLASS_003
+    name: VERIFICATION_CHAIN
+    directionality: UNI
+    direction: artifact → hash
+    axis_binding:
+      - VERIFICATION_REQUIREMENT
+    permits:
+      - proof_linkage
+    cannot_carry:
+      - content
+      - behavior
+      - timing
+    
+  mode_restriction:
+    id: EDGE_CLASS_004
+    name: MODE_RESTRICTION
+    directionality: UNI
+    direction: OPERATIONAL_MODE_ENFORCER → target_node
+    axis_binding:
+      - OPERATIONAL_MODE_BINDING
+    permits:
+      - operation_filtering
+    cannot_carry:
+      - exceptions
+      - conditions
+      - optimizations
+    
+  guardian_watch:
+    id: EDGE_CLASS_005
+    name: GUARDIAN_WATCH
+    directionality: UNI
+    direction: GUARDIAN_SYSTEM → watched_node
+    axis_binding:
+      - CONSTRAINT_LAYER
+    permits:
+      - violation_detection
+    cannot_carry:
+      - remediation
+      - interpretation
+      - prediction
+    
+  correspondence_mapping:
+    id: EDGE_CLASS_006
+    name: CORRESPONDENCE_MAPPING
+    directionality: BI
+    direction: reality ↔ code
+    axis_binding:
+      - VERIFICATION_REQUIREMENT
+    constraint: CORRESPONDENCE
+    permits:
+      - bijective_reference
+    cannot_carry:
+      - approximation
+      - inference
+      - interpretation
+    
+  violation_reference:
+    id: EDGE_CLASS_007
+    name: VIOLATION_REFERENCE
+    directionality: UNI
+    direction: violating_node → VIOLATION_LOG
+    axis_binding:
+      - TEMPORAL_ORDERING
+    permits:
+      - append_only_logging
+    cannot_carry:
+      - remediation
+      - interpretation
+      - aggregation
+    
+  spatial_containment:
+    id: EDGE_CLASS_008
+    name: SPATIAL_CONTAINMENT
+    directionality: UNI
+    direction: parent_directory → child
+    axis_binding:
+      - SPATIAL
+    permits:
+      - filesystem_hierarchy
+    cannot_carry:
+      - meaning
+      - authority
+      - constraints
+
+metadata:
+  version: 1.0.0
+  immutable: true
+  hash: [COMPUTED_ON_COMMIT]

@@ -1,0 +1,184 @@
+# CANONICAL TOPOLOGY GRAPH SCHEMA
+# Single source of truth for all validation checks
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+graph_structure:
+  nodes:
+    description: Map of node_id to node attributes
+    schema:
+      node_id:
+        type: string
+        format: "filepath_relative_to_repo_root"
+        example: "src/principles.py"
+      attributes:
+        node_class:
+          type: enum
+          values:
+            - COVENANT_ROOT
+            - PRINCIPLE_MODULE
+            - OPERATIONAL_MODE_ENFORCER
+            - GUARDIAN_SYSTEM
+            - CORRESPONDENCE_BRIDGE
+            - FORGIVENESS_MODULE
+            - VIOLATION_LOG
+            - EVIDENCE_ARTIFACT
+            - INFRASTRUCTURE_REGISTRY
+            - DOCUMENTATION_INDEX
+          required: true
+        authority:
+          type: enum
+          values:
+            - IMMUTABLE
+            - EXTERNAL_ONLY
+            - VALIDATED
+            - UNRESTRICTED
+          required: true
+        constraint_layer:
+          type: enum_set
+          values:
+            - LOGOS
+            - CHALCEDON
+            - GRACE
+            - KENOSIS
+            - AGAPE
+            - COMPOSITE
+            - NONE
+          required: true
+        verification:
+          type: enum
+          values:
+            - HASH_CHAIN
+            - SIGNATURE
+            - CORRESPONDENCE
+            - FALSIFIABLE
+            - NONE
+          required: true
+        temporal:
+          type: enum
+          values:
+            - GENESIS
+            - FOUNDATION
+            - SUBSTRATE
+            - OVERLAY
+            - EPHEMERAL
+          required: true
+        operational_mode_binding:
+          type: enum_set
+          values:
+            - FORENSIC_ONLY
+            - POPPERIAN_ONLY
+            - FORENSIC_AND_POPPERIAN
+            - ANY
+          required: false
+  
+  edges:
+    description: Map of edge_id to edge attributes
+    schema:
+      edge_id:
+        type: string
+        format: "source::target::edge_class"
+        example: "covenant.yaml::src/principles.py::COVENANT_BINDING"
+      attributes:
+        source:
+          type: string
+          description: Source node_id
+          required: true
+        target:
+          type: string
+          description: Target node_id
+          required: true
+        edge_class:
+          type: enum
+          values:
+            - COVENANT_BINDING
+            - DEPENDENCY_IMPORT
+            - VERIFICATION_CHAIN
+            - MODE_RESTRICTION
+            - GUARDIAN_WATCH
+            - CORRESPONDENCE_MAPPING
+            - VIOLATION_REFERENCE
+            - SPATIAL_CONTAINMENT
+          required: true
+        directionality:
+          type: enum
+          values:
+            - UNI
+            - BI
+          required: true
+        axis_binding:
+          type: enum_set
+          values:
+            - SPATIAL
+            - AUTHORITY
+            - CONSTRAINT_LAYER
+            - DEPENDENCY_FLOW
+            - VERIFICATION_REQUIREMENT
+            - OPERATIONAL_MODE_BINDING
+            - TEMPORAL_ORDERING
+          required: true
+  
+  axes:
+    description: Explicit axis bindings (no inferred meaning)
+    schema:
+      SPATIAL:
+        measurable: true
+        properties:
+          - directory_depth
+          - path_distance
+      AUTHORITY:
+        measurable: false
+        ordering: IMMUTABLE > EXTERNAL_ONLY > VALIDATED > UNRESTRICTED
+      CONSTRAINT_LAYER:
+        measurable: false
+        additive: true
+      DEPENDENCY_FLOW:
+        measurable: false
+        directed: true
+      VERIFICATION_REQUIREMENT:
+        measurable: false
+        ordering: NONE < HASH_CHAIN < CORRESPONDENCE
+      OPERATIONAL_MODE_BINDING:
+        measurable: false
+        restrictive: true
+      TEMPORAL_ORDERING:
+        measurable: false
+        ordering: GENESIS < FOUNDATION < SUBSTRATE < OVERLAY < EPHEMERAL
+  
+  zones:
+    description: Spatial containment only (no semantic meaning)
+    schema:
+      zone_id:
+        type: string
+        example: "zone_1_immutable_authority"
+      attributes:
+        node_ids:
+          type: list
+          description: Nodes contained in this zone
+        spatial_path:
+          type: string
+          description: Directory path (if zone corresponds to directory)
+        change_policy:
+          type: string
+          description: Constraint on modifications (not enforced by graph)
+  
+  root:
+    description: Single covenant root node
+    schema:
+      covenant_root_id:
+        type: string
+        required: true
+        cardinality: exactly_one
+
+constraints:
+  - All node_ids in edges must exist in nodes
+  - All source/target in edges must be valid node_ids
+  - Exactly one node with node_class = COVENANT_ROOT
+  - No derived fields allowed
+  - No summary statistics allowed
+  - No metrics allowed
+  - Graph is immutable after loading
+
+metadata:
+  version: 1.0.0
+  immutable: true

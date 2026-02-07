@@ -1,0 +1,108 @@
+# TOPOLOGY AXES
+# Orthogonal dimensions for navigation
+# Authority: IMMUTABLE
+# Generated: 2026-02-07
+
+axes:
+  spatial:
+    id: AXIS_1
+    name: SPATIAL
+    description: Physical directory structure adjacency only
+    measures:
+      - directory_depth
+      - path_distance
+    does_not_encode:
+      - meaning
+      - authority
+      - constraints
+    
+  authority:
+    id: AXIS_2
+    name: AUTHORITY
+    description: Who may modify structure
+    values:
+      - IMMUTABLE
+      - EXTERNAL_ONLY
+      - VALIDATED
+      - UNRESTRICTED
+    does_not_encode:
+      - trust
+      - preference
+      - capability
+    
+  constraint_layer:
+    id: AXIS_3
+    name: CONSTRAINT_LAYER
+    description: What covenant principles bind this structure
+    values:
+      - LOGOS
+      - CHALCEDON
+      - GRACE
+      - KENOSIS
+      - AGAPE
+      - COMPOSITE
+      - NONE
+    does_not_encode:
+      - enforcement_mechanism
+      - priority
+      - weight
+    
+  dependency_flow:
+    id: AXIS_4
+    name: DEPENDENCY_FLOW
+    description: Import/require relationships only
+    directionality: source → target
+    does_not_encode:
+      - timing
+      - causality
+      - execution_order
+    
+  verification_requirement:
+    id: AXIS_5
+    name: VERIFICATION_REQUIREMENT
+    description: What must be proven true at this location
+    values:
+      - HASH_CHAIN
+      - SIGNATURE
+      - CORRESPONDENCE
+      - FALSIFIABLE
+      - NONE
+    does_not_encode:
+      - confidence_level
+      - strength
+      - trust
+    
+  operational_mode_binding:
+    id: AXIS_6
+    name: OPERATIONAL_MODE_BINDING
+    description: Which operational modes may access this structure
+    values:
+      - FORENSIC_ONLY
+      - POPPERIAN_ONLY
+      - FORENSIC_AND_POPPERIAN
+      - ANY
+    does_not_encode:
+      - permission_level
+      - user_role
+      - capability
+    
+  temporal_ordering:
+    id: AXIS_7
+    name: TEMPORAL_ORDERING
+    description: Construction sequence dependencies only
+    values:
+      - GENESIS
+      - FOUNDATION
+      - SUBSTRATE
+      - OVERLAY
+      - EPHEMERAL
+    ordering: GENESIS → FOUNDATION → SUBSTRATE → OVERLAY → EPHEMERAL
+    does_not_encode:
+      - time_of_execution
+      - timestamp
+      - duration
+
+metadata:
+  version: 1.0.0
+  immutable: true
+  hash: [COMPUTED_ON_COMMIT]

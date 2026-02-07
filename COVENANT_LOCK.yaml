@@ -1,0 +1,15 @@
+covenant: SIGMA_LORA
+version: GENESIS
+immutability: ABSOLUTE
+hash_scope: ENTIRE_REPOSITORY
+manifest: GENESIS_MANIFEST.yaml
+
+rule:
+  - Any byte change invalidates covenant
+  - No amendments
+  - No migrations
+  - No re-interpretation
+  - Reality is bytes + hashes + ordering only
+
+authority: EXTERNAL_IMMUTABLE
+timestamp: 2026-02-07T07:38:44Z
