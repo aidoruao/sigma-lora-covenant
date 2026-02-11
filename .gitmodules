@@ -1,5 +1,8 @@
 [submodule "orthogonal-engineering"]
-	path = orthogonal-engineering
-	url = file:///C:/Users/Aidor/orthogonal-engineering
+	path = orthogonal-engineering-ref
+	url = https://github.com/aidoruao/orthogonal-engineering.git
 	shallow = true
 	update = none
+[submodule "orthogonal-engineering-ref"]
+	path = orthogonal-engineering-ref
+	url = https://github.com/aidoruao/orthogonal-engineering.git
