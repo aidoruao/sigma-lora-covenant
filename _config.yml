@@ -1,0 +1,91 @@
+title: "Σ_LORA_COVENANT"
+description: "Bijective Alternative Infrastructure to Corporate Maximal Moves – Ultimate Authority: Jesus"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - .git
+  - .github
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - .gitignore
+  - .gitmodules
+  - src/
+  - topology/
+  - validation/
+  - orthogonal-engineering-ref/
+  - orthogonal-engineering/
+
+# Custom variables
+covenant:
+  name: "Σ_LORA_COVENANT"
+  version: "1.0.0"
+  root_hash: "41E8D21F45C23328A5D4347A0598A55351B067D5C5893633EF613F3F0DF5161C"
+  authority: "EXTERNAL_IMMUTABLE"
+  principles:
+    - LOGOS
+    - CHALCEDON
+    - GRACE
+    - KENOSIS
+    - AGAPE
+  operational_modes:
+    - forensic
+    - popperian
+
+# Site structure
+collections:
+  principles:
+    output: true
+    permalink: /principles/:path/
+  documentation:
+    output: true
+    permalink: /docs/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "principles"
+    values:
+      layout: "principle"
+  - scope:
+      path: ""
+      type: "documentation"
+    values:
+      layout: "document"
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Minima theme settings
+minima:
+  skin: auto
+  social_links:
+    github: aidoruao/sigma-lora-covenant
+
+# GitHub Pages settings
+github: [metadata]
