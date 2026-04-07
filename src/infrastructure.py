@@ -38,7 +38,10 @@ class ArtifactRegistry:
     
     def verify_artifact(self, artifact_type, hash_value):
         """Verify artifact hash against registry."""
-        return True  # Placeholder for hash verification logic
+        artifact = getattr(self, artifact_type, None)
+        if artifact is None:
+            return False
+        return artifact.get("base_hash") == hash_value
     
     def get_constraints(self, artifact_type):
         """Retrieve constraints for artifact type."""
