@@ -21,7 +21,9 @@ class Principle:
     
     def _check_constraint(self, constraint, artifact):
         """Internal constraint verification."""
-        pass
+        if not hasattr(artifact, "hash") or not hasattr(artifact, "constraints"):
+            return False
+        return constraint in artifact.constraints
 
 
 # LOGOS: Truth-Only
